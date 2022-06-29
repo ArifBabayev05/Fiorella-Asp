@@ -66,10 +66,6 @@ $(document).ready(function () {
     let parentRow = document.getElementById("parentRow");
     let currentPageCount = 1;
 
-
-    //Işdəmir Burasııııııı
-
-
     showMoreButton.addEventListener("click", async function () {
         let pageCount = await getPageCount();
         console.log(currentPageCount)
