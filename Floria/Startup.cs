@@ -40,6 +40,7 @@ namespace Floria
 
             services.AddScoped<IProductService, ProductRepository>();
             services.AddScoped<ICategoryService, CategoryRepositories>();
+            services.AddScoped<IImageService, ImageRepository>();
 
         }
 
