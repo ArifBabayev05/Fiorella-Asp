@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Repositories;
@@ -20,12 +21,17 @@ namespace Floria.Areas.Admin.Controllers
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly IWebHostEnvironment _env;
+        private readonly IImageService _imageService;
 
-        public ProductsController(IProductService productRepository, ICategoryService categoryRepositories, IWebHostEnvironment env)
+        public ProductsController(IProductService productRepository,
+                                  ICategoryService categoryRepositories,
+                                  IWebHostEnvironment env,
+                                  IImageService imageService)
         {
             _productService = productRepository;
             _categoryService = categoryRepositories;
             _env = env;
+            _imageService = imageService;
         }
 
         public async Task<IActionResult> Index()
@@ -76,18 +82,32 @@ namespace Floria.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( Product product)
         {
-            string path = _env.WebRootPath;
-
-
-            return Json(path);
-
-
             var categories = await _categoryService.GetAll();
             ViewData["categories"] = categories;
             if (!ModelState.IsValid)
             {
                 return View();
             }
+
+            string fileName = Guid.NewGuid().ToString() + product.ImageFile.FileName;
+
+            if (fileName.Length>255)
+            {
+                fileName.Substring(fileName.Length - 254);
+            }
+
+
+            string path = Path.Combine(_env.WebRootPath, "assets", "uploads", "images",fileName);
+            using(FileStream fs = new FileStream(path, FileMode.Create))
+            {
+                 await product.ImageFile.CopyToAsync(fs);
+            }
+
+            Image image = new Image();
+            image.Name = fileName;
+            await _imageService.Create(image);
+
+            product.ImageId = image.Id;
 
             await _productService.Create(product);
 
