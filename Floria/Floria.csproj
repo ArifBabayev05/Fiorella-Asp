@@ -18,6 +18,8 @@
     <Folder Include="Areas\Admin\Views\Products\" />
     <Folder Include="Areas\Admin\Views\Positions\" />
     <Folder Include="Areas\Admin\Views\Experts\" />
+    <Folder Include="wwwroot\assets\uploads\" />
+    <Folder Include="wwwroot\assets\uploads\images\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +33,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,9 +55,12 @@
     <None Remove="Areas\Admin\Views\Products\" />
     <None Remove="Areas\Admin\Views\Position\" />
     <None Remove="Areas\Admin\Views\Experts\" />
+    <None Remove="Microsoft.AspNetCore.Http" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Areas\" />
     <Content Remove="wwwroot\Areas\Admin\" />
+    <Content Remove="wwwroot\assets\uploads\" />
+    <Content Remove="wwwroot\assets\uploads\images\" />
   </ItemGroup>
 </Project>
