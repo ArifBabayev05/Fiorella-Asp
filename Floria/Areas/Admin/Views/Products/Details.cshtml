@@ -1,15 +1,12 @@
 ﻿@model Product
 
-
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Products</h4>
+            <h1 class="card-title">Products</h1>
             <div class="d-flex justify-content-between my-3">
-                <a asp-area="admin" asp-action="index" asp-controller="products" class="btn btn-secondary">Go Back</a>
-
+                <a asp-area="admin" asp-controller="products" asp-action="index" class="btn btn-secondary">Go Back</a>
             </div>
-
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -52,8 +49,8 @@
                                 @Model.Category.Name
                             </td>
                             <td>
-                                <a asp-area="admin" asp-action="update" asp-controller="products" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
-                                <a asp-area="admin" asp-action="delete" asp-controller="products" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                                <a asp-area="admin" asp-controller="products" asp-action="update" class="btn btn-warning">Update</a>
+                                <a asp-area="admin" asp-controller="products" asp-action="delete" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     </tbody>

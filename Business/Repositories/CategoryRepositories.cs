@@ -10,13 +10,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Business.Repositories
 {
-	public class CategoryRepositories : ICategoryService 
-	{
-		private readonly AppDbContext _context;
-		public CategoryRepositories(AppDbContext context)
-		{
-			_context = context;
-		}
+    public class CategoryRepository : ICategoryService
+    {
+        private readonly AppDbContext _context;
+
+        public CategoryRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Category> Get(int? id)
         {
@@ -25,11 +26,11 @@ namespace Business.Repositories
                 throw new ArgumentNullException("Id");
             }
             var data = await _context.Categories.Where(n => n.Id == id)
-                                                .FirstOrDefaultAsync();
+                                              .FirstOrDefaultAsync();
 
             if (data is null)
             {
-                throw new NullReferenceException("Data Could Not Be Found!");
+                throw new NullReferenceException("Data could not be found");
             }
             return data;
         }
@@ -37,14 +38,14 @@ namespace Business.Repositories
         public async Task<List<Category>> GetAll()
         {
             var data = await _context.Categories.Where(n => !n.IsDeleted)
-                                             .OrderByDescending(n => n.CreatedDate)
-                                             .ToListAsync();
-
+                                              .OrderByDescending(n => n.CreatedDate)
+                                              .ToListAsync();
             if (data is null)
             {
                 throw new NullReferenceException();
             }
-            return data; 
+
+            return data;
         }
 
         public async Task Create(Category entity)
@@ -60,11 +61,12 @@ namespace Business.Repositories
             var dbEntity = await Get(id);
             if (dbEntity is null)
             {
-                throw new NullReferenceException("Product is null!");
+                throw new NullReferenceException("Product is null");
             }
+
             dbEntity.Name = entity.Name;
-       
             dbEntity.UpdatedDate = DateTime.Now;
+
             await _context.SaveChangesAsync();
         }
 
@@ -75,14 +77,14 @@ namespace Business.Repositories
                 throw new ArgumentNullException();
             }
             var data = await Get(id);
+
             if (data is null)
             {
                 throw new NullReferenceException();
             }
             data.IsDeleted = true;
 
-            await _context.SaveChangesAsync(); 
+            await _context.SaveChangesAsync();
         }
     }
 }
-
