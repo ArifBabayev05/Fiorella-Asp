@@ -20,6 +20,8 @@
     <Folder Include="Areas\Admin\Views\Experts\" />
     <Folder Include="wwwroot\assets\uploads\" />
     <Folder Include="wwwroot\assets\uploads\images\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Extensions\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +58,8 @@
     <None Remove="Areas\Admin\Views\Position\" />
     <None Remove="Areas\Admin\Views\Experts\" />
     <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="Helpers\" />
+    <None Remove="Helpers\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Areas\" />

@@ -1,6 +1,7 @@
 ﻿@model Product
+
 @{
-    List<Category> categories = (List<Category>)ViewData["categories"];
+    List<Category> categories = (List<Category>)ViewData["categoies"];
 }
 
 <div class="container">
@@ -8,8 +9,8 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Product Update</h4>
-                    <form method="post" class="forms-sample">
+                    <h4 class="card-title">Update - Product</h4>
+                    <form enctype="multipart/form-data" method="post" class="forms-sample">
                         <div class="form-group">
                             <label asp-for="Name">Name</label>
                             <input asp-for="Name" class="form-control" placeholder="Name">
@@ -20,32 +21,32 @@
                             <input asp-for="Count" class="form-control" placeholder="Count">
                             <span asp-validation-for="Count" class="text-danger"></span>
                         </div>
-
                         <div class="form-group">
                             <label asp-for="Price">Price</label>
-                            <input asp-for="Price" class="form-control" placeholder="Price  ">
+                            <input asp-for="Price" class="form-control" placeholder="Price">
                             <span asp-validation-for="Price" class="text-danger"></span>
                         </div>
-
                         <div class="form-group">
-                            <label asp-for="ImageId">Image</label>
-                            <input asp-for="ImageId" class="form-control" placeholder="Image  ">
-                            <span asp-validation-for="ImageId" class="text-danger"></span>
+                            <label asp-for="ImageFile">Image</label>
+                            <input asp-for="ImageFile" class="form-control" accept="image/*">
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="ImageId" type="hidden" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label asp-for="CategoryId">Large select</label>
-                            <select asp-for="CategoryId" class="form-control form-control-lg" id="">
+                            <select asp-for="CategoryId" class="form-control form-control-lg">
                                 @foreach (var category in categories)
                                 {
                                     <option value="@category.Id">@category.Name</option>
                                 }
-
                             </select>
                             <span asp-validation-for="CategoryId" class="text-danger"></span>
                         </div>
 
-                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
                         <button asp-controller="products" asp-action="index" class="btn btn-light">Cancel</button>
                     </form>
                 </div>
