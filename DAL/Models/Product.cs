@@ -1,7 +1,9 @@
 ﻿using DAL.Base;
 using DAL.Entity;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
@@ -13,6 +15,8 @@ namespace DAL.Models
         public double Price { get; set; }
         [Required, Range(1, 100, ErrorMessage = "Count cannot be more than 100")]
         public int Count { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
 
         public int? CategoryId { get; set; }
         public Category Category { get; set; }

@@ -6,6 +6,7 @@ using Business.Repositories;
 using Business.Services;
 using DAL.Data;
 using DAL.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,11 +19,13 @@ namespace Floria.Areas.Admin.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+        private readonly IWebHostEnvironment _env;
 
-        public ProductsController(IProductService productRepository, ICategoryService categoryRepositories)
+        public ProductsController(IProductService productRepository, ICategoryService categoryRepositories, IWebHostEnvironment env)
         {
             _productService = productRepository;
             _categoryService = categoryRepositories;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -73,6 +76,12 @@ namespace Floria.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( Product product)
         {
+            string path = _env.WebRootPath;
+
+
+            return Json(path);
+
+
             var categories = await _categoryService.GetAll();
             ViewData["categories"] = categories;
             if (!ModelState.IsValid)

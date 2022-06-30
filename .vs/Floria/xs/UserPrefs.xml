@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{A539C562-AD97-41DE-8C42-23CB0F6EFDA0}|Default">
-  <MonoDevelop.Ide.ItemProperties.Floria PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Floria/wwwroot/assets/js/script.js">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Business/Repositories/ProductRepository.cs">
     <Files>
       <File FileName="Business/Repositories/ProductRepository.cs" Line="13" Column="50" />
       <File FileName="Business/Repositories/CategoryRepositories.cs" Line="13" Column="55" />
@@ -45,9 +46,7 @@
                   <Node name="Admin" expanded="True" />
                 </Node>
                 <Node name="assets" expanded="True">
-                  <Node name="js" expanded="True">
-                    <Node name="script.js" selected="True" />
-                  </Node>
+                  <Node name="js" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -59,6 +58,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Floria PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>
